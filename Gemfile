@@ -12,8 +12,6 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'simple_form'
 gem 'carrierwave'
 gem "mini_magick"
-gem 'waveform'
-gem 'oily_png'
 gem "ckeditor", :git => 'https://github.com/galetahub/ckeditor.git'
 
 # Gems used only for assets and not required

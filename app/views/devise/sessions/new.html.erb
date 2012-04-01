@@ -1,0 +1,18 @@
+<div class="row-fluid">
+	<div class="span4">&nbsp;</div>
+	<div class="span4 well">
+		<h2>Sign in</h2>
+
+		<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		    <%= f.input :email, :required => true,:input_html => {:style => "width: 95%;"},:wrapper => :append, :autofocus => true %>
+		    <%= f.input :password, :required => false,:wrapper => :append,:input_html => {:style => "width: 95%;"} %>
+		    <%= f.input :remember_me, :label => false, :as => :boolean if devise_mapping.rememberable? %>
+		    <%= f.label :remember_me %>
+		  <div class="actions">
+		    <%= f.button :submit, "Sign in" %>
+		  </div>
+		<% end %>
+		
+		<%= render "links" %>
+	</div>
+</div>
