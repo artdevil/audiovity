@@ -1,22 +1,67 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-    <%= f.input :password_confirmation, :required => false %>
-    <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
-  </div>
-
-  <div class="actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+<div class="row-fluid">
+	<div class="span1">
+		&nbsp;
+	</div>
+	<div class="span7">
+		<div class="well back_well">
+			<h2>Edit <%= resource_name.to_s.humanize %></h2>
+			<hr />
+			<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+			<% resource.build_address unless resource.address %>
+			    <div class="row-fluid">
+					<div class="span6">
+						<h4>Base Infrormation</h4>
+						<br />
+						<%= f.input :profile_picture, :as => :file %>
+						<%= f.input :email, :required => true, :autofocus => true %>
+						<%= f.input :first_name,:wrapper => :append %>
+						<%= f.input :last_name,:wrapper => :append %>
+						<%= f.input :birthday, :start_year => Date.today.year - 50 %>
+						<%= f.label :time_zoned,:required => true %>
+						<%= f.time_zone_select :time_zoned %>
+						<%= f.input :language_selection,:collection => [['english','en'],['indonesia','id']], :include_blank => false %>
+					</div>
+					<div class="span6">
+						<h4>Address Information</h4>
+						<br />
+						<%= f.simple_fields_for :address do |n| %>
+							<%= n.input :line_1,:label => "Address 1" %>
+							<%= n.input :line_2,:label => "Address 2" %>
+							<%= n.input :country, :include_blank => false, :priority => ["Indonesia"] %>
+							<%= n.input :city %>
+							<%= n.input :mobile_phone %>
+						<% end %>
+					</div>
+				</div>
+				<br />
+				<div class="row-fluid">
+					<div class="span6">
+					<h4>Security Information</h4>
+					<br />
+						<%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false, :input_html => { :autocomplete => 'off' } %>
+					    <%= f.input :password_confirmation, :required => false, :input_html => { :autocomplete => 'off' } %>
+					    <%= f.input :current_password,:input_html => { :autocomplete => 'off' }, :hint => "we need your current password to confirm your changes", :required => true %>
+					</div>
+				</div>
+				<hr />
+				<%= f.button :submit, "Update",:class => "btn btn-primary" %> <%= link_to "Back", :back,:class => "btn btn-danger" %>
+			<% end %>
+		</div>
+	</div>
+	<div class="span3">
+		<div class='well back_well'>
+			<h2>Profile picture</h2>
+			<br />
+			<div class="row-fluid">
+				<div class="span2">&nbsp;</div>
+				<div class="span8">
+				<% if resource.profile_picture? %>
+					<%= image_tag(resource.profile_picture_url)  %>
+				<% else %>
+					<%= image_tag('userblank.jpg')%>
+				<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

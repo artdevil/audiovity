@@ -9,7 +9,7 @@
           <%= link_to 'Audiovity', root_path, :class => "brand"%>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-                <li class='active'><%= link_to "Home", "#"  %></li>
+                <li class='active'><%= link_to "Home", root_path  %></li>
                 <li><%= link_to "Music", "#"  %></li>
                 <li><%= link_to "About", "#"  %></li>
             </ul>
@@ -23,7 +23,14 @@
 					<li><button class='btn btn-primary'>Signup</button>
 					</li>
 				<% else %>
-					<li class='padding_config_top_up'>welcome <font class='blue_text'><%= current_user.first_name %> <%= current_user.last_name %></font></li>
+					<li class='padding_config_top_up'>
+						<% if current_user.profile_picture? %> 
+							<%= image_tag(current_user.profile_picture.thumb) %>
+						<% else %>
+							<%= image_tag('thumb_userblank.jpg')%>
+						<% end %>
+						<font class='blue_text'><%= current_user.first_name %> <%= current_user.last_name %></font>
+					</li>
 					<li class='divider-vertical'></li>
 					<li>
 		              	<ul class="nav">
@@ -32,7 +39,7 @@
 							    <ul class="dropdown-menu">
 							    	<li></li>
 							    	<li><a>Playlist</a></li>
-							    	<li><a>Setting</a></li>
+							    	<li><%= link_to "setting profile", edit_user_registration_path %></li>
 							    	<li class="divider"></li>
 							    	<li><%= link_to 'Signout', destroy_user_session_path, :method => :delete %></li>
 							    </ul>

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :address_attributes, 
                   :first_name, :last_name, :birthday, :time_zoned, :profile_address, :language_selection, :roles, :profile_picture
+  mount_uploader :profile_picture, ProfilePictureUploader
   validates :first_name, :last_name, :birthday, :time_zoned, :presence => true
   accepts_nested_attributes_for :address
 end

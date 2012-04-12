@@ -20,6 +20,12 @@ body{
 	background: white;
 }
 
+.back_up{
+	background: url(background.png) repeat-x center bottom;
+	background-color: white;
+	height: auto;
+}
+
 /* font */
 abbr{
 	color: red;
@@ -36,6 +42,7 @@ abbr{
 
 span.help-inline{
 	font-weight: bold;
+	display: block;
 }
 
 /* margin padding and floating */
@@ -44,7 +51,7 @@ span.help-inline{
 }
 
 .padding_config_top_up{
-	padding-top: 10px;
+	padding-top: 9px;
 }
 
 .margin_left_up_15{
