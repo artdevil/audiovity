@@ -1,17 +1,28 @@
-<h2>Sign up</h2>
+<div class='row-fluid'>
+	<div class='span4'>&nbsp;</div>
+	<div class='span4 well back_well'>
+		<h2>Sign up</h2>
+		<hr />
+		<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+			<% resource.build_address unless resource.address %>
+		    <%= f.input :email, :required => true,:input_html => {:class => "full"},:wrapper => :append, :autofocus => true %>
+			<%= f.input :first_name,:input_html => {:class => "full"},:wrapper => :append %>
+			<%= f.input :last_name,:input_html => {:class => "full"},:wrapper => :append %>
+			<%= f.input :birthday, :start_year => Date.today.year - 50 %>
+			<%= f.label :time_zoned,:required => true %>
+			<%= f.time_zone_select :time_zoned %>
+			<%= f.simple_fields_for :address do |n| %>
+				<%= n.input :line_1,:input_html => {:class => "full"},:label => "Address 1" %>
+				<%= n.input :line_2,:input_html => {:class => "full"},:label => "Address 2" %>
+				<%= n.input :country, :include_blank => false, :priority => ["Indonesia"] %>
+				<%= n.input :city,:input_html => {:class => "full"} %>
+				<%= n.input :mobile_phone,:input_html => {:class => "full"} %>
+			<% end %>
+		    <%= f.input :password,:input_html => {:class => "full"},:wrapper => :append, :required => true %>
+		    <%= f.input :password_confirmation,:input_html => {:class => "full"},:wrapper => :append, :required => true %>
+		    <%= f.button :submit, "Sign up", :class => "btn btn-primary" %>
+		<% end %>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
-  </div>
-
-  <div class="actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "links" %>
+		<%= render "links" %>
+	</div>
+</div>

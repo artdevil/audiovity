@@ -1,7 +1,7 @@
 Audiolist::Application.routes.draw do
   resources :users
   root :to => 'users#index'
-  devise_for :users, :path => "useraccount"
+  devise_for :users, :path => "useraccount",:path_names => { :sign_up => "signup",:sign_in => "login" }
 
   ActiveAdmin.routes(self)
 

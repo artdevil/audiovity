@@ -73,6 +73,10 @@ GEM
       execjs
     coffee-script-source (1.2.0)
     commonjs (0.2.5)
+    countries (0.8.2)
+      currencies (= 0.4.0)
+      currencies (>= 0.2.0)
+    currencies (0.4.0)
     devise (2.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -203,6 +207,7 @@ DEPENDENCIES
   carrierwave
   ckeditor!
   coffee-rails (~> 3.2.1)
+  countries
   jquery-rails
   mini_magick
   omniauth-facebook

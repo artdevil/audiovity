@@ -13,6 +13,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem "mini_magick"
 gem "ckeditor", :git => 'https://github.com/galetahub/ckeditor.git'
+gem 'countries'
 
 # Gems used only for assets and not required
 # in production environments by default.

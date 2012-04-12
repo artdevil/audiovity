@@ -10,3 +10,52 @@
  *
  *= require bootstrap_and_overrides
 */
+
+/* body and base style */
+body{
+	background: url('back.png') repeat;
+}
+
+.back_well{
+	background: white;
+}
+
+/* font */
+abbr{
+	color: red;
+}
+
+.blue_text{
+	color: #60cae5;
+}
+
+.white_text{
+	color: white;
+	font-weight: bold;
+}
+
+span.help-inline{
+	font-weight: bold;
+}
+
+/* margin padding and floating */
+.full{
+	width: 95%;
+}
+
+.padding_config_top_up{
+	padding-top: 10px;
+}
+
+.margin_left_up_15{
+	margin-left: 15px;
+}
+
+/* dates and time zoned */
+.controls .date{
+	width: 100px;
+}
+
+#user_time_zoned{
+	width: 307px;
+}

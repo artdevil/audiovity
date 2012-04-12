@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120331031432) do
+ActiveRecord::Schema.define(:version => 20120412152125) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -27,6 +27,18 @@ ActiveRecord::Schema.define(:version => 20120331031432) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "addresses", :force => true do |t|
+    t.string   "line_1"
+    t.string   "line_2"
+    t.string   "country"
+    t.string   "city"
+    t.string   "mobile_phone"
+    t.integer  "addressable_id"
+    t.string   "addressable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -57,8 +69,20 @@ ActiveRecord::Schema.define(:version => 20120331031432) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.date     "birthday"
+    t.string   "profile_address"
+    t.string   "language_selection"
+    t.string   "time_zoned"
+    t.string   "roles"
+    t.string   "profile_picture"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
