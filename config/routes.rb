@@ -1,4 +1,12 @@
 Audiolist::Application.routes.draw do
+
+  mount Ckeditor::Engine => '/ckeditor'
+
+  resources :audios do
+    collection do
+      get 'myaudios'
+    end
+  end
   resources :users
   root :to => 'users#index'
   devise_for :users, :path => "useraccount",:path_names => { :sign_up => "signup",:sign_in => "login" }

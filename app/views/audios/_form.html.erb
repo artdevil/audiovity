@@ -1,0 +1,14 @@
+<%= simple_form_for @audio do |f| %>
+	<%= f.input :path,:label => "upload file audio",:hint => "only .mp3 and .wav", :as => :file %>
+	<%= f.input :cover, :as => :file %>
+	<%= f.input :title %>
+	<%= f.input :artist %>
+	<%= f.input :downloadable,:label => false %>
+	<%= f.label :downloadable,:class => "margin_left_up_15" %>
+	<%= f.association :genre, :include_blank => false %>
+	<%= f.input :description, :as => :ckeditor, :input_html => { :toolbar => 'Easy'} %>
+	<%= f.input :audio_text,:label => "lyric", :as => :ckeditor, :input_html => { :toolbar => 'Easy' }%>
+	<%= f.input :user_id,:input_html => { :value => current_user.id } , :as => :hidden %>
+	<hr />
+	<%= f.button :submit,:class => "btn btn-primary" %> <%= link_to "Back", :back,:class => "btn btn-danger" %>
+<% end %>

@@ -209,6 +209,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   countries
   jquery-rails
+  kaminari
   mini_magick
   omniauth-facebook
   rails (= 3.2.2)

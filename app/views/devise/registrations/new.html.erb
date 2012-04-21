@@ -12,8 +12,6 @@
 			<%= f.label :time_zoned,:required => true %>
 			<%= f.time_zone_select :time_zoned %>
 			<%= f.simple_fields_for :address do |n| %>
-				<%= n.input :line_1,:input_html => {:class => "full"},:label => "Address 1" %>
-				<%= n.input :line_2,:input_html => {:class => "full"},:label => "Address 2" %>
 				<%= n.input :country, :include_blank => false, :priority => ["Indonesia"] %>
 				<%= n.input :city,:input_html => {:class => "full"} %>
 				<%= n.input :mobile_phone,:input_html => {:class => "full"} %>

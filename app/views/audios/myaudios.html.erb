@@ -1,0 +1,96 @@
+<%= render 'audios/myplaylist' %>
+<div class="row-fluid">
+	<div class="span1">
+		&nbsp;
+	</div>
+	<div class="span3">
+		<div class="well back_well">
+			<h3>User Profile</h3>
+			<hr />
+			<div class="row-fluid">
+				<div class="span2">
+					&nbsp;
+				</div>
+				<div class="span8">
+					<%= image_tag(current_user.profile_picture_url) %>
+				</div>
+			</div>
+			<br />
+			<div class="row-fluid">
+				<div class="span12">
+					<strong>email :</strong> <%= current_user.email %>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span12">
+					<strong>Username :</strong> <%= current_user.first_name %> <%= current_user.last_name %>
+				</div>
+			</div>
+			<br />
+			<div class="row-fluid">
+					<%= link_to "edit profile",edit_user_registration_path,:class => "btn btn-primary span11"%>
+			</div>
+		</div>
+	</div>
+	<div class="span7">
+		<div class="well back_well">
+			<h3>My Audio</h3>
+			<hr />
+			<div class="row-fluid">
+				<script type="text/javascript">
+					$(document).ready(function(){
+						<% a = 1 %>
+						<% @audios.each do |n| %>
+							$("#jquery_jplay_<%= a %>").jPlayer({
+								ready: function () {
+									$(this).jPlayer("setMedia", {
+										mp3: "<%= n.path_url.to_s %>"
+									});
+								},
+								play: function() { // To avoid both jPlayers playing together.
+									$(this).jPlayer("pauseOthers");
+								},
+								swfPath: "/assets",
+								supplied: "mp3",
+								wmode: "window",
+								cssSelectorAncestor: "#jp_contain_<%= a %>",
+							});
+							<% a = a + 1 %>
+						<% end %>
+					});
+				</script>
+				<% b = 1 %>
+				<% @audios.each do |f| %>
+					<div class="playlist-audio">
+						<%= image_tag(f.cover_url(:thumb),:class => "border-image") %>
+						<div id="jquery_jplay_<%= b %>" class="jp-jplayer"></div>
+						<div id="jp_contain_<%= b %>">
+							<div class="jp-type-single">
+								<ul class="jp-control">
+									<li>
+										<a href="javascript:;" class="jp-play background-none" tabindex="1">
+											start
+										</a>
+									</li>
+									<li><a href="javascript:;" class="jp-pause background-none" tabindex="1">pause</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<% b = b +1 %>
+				<% end %>
+			</div>
+			<hr />
+			<div class="align-right">
+				<%= paginate @audios %>
+			</div>
+			<div class="row-fluid">
+				<div class="span1">&nbsp;</div>
+				<%= link_to "New Audio",new_audio_path,:class => "btn-primary btn span11"%>
+			</div>
+		</div>
+	</div>
+	<div class="span1">
+		&nbsp;
+	</div>
+</div>

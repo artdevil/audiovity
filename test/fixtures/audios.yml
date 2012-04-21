@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  path: MyString
+  cover: MyString
+  title: MyString
+  artist: MyString
+  description: MyText
+  audio_text: MyText
+  category_id: 1
+  genre: 
+  duration: MyString
+  listener: MyString
+  downloadable: false
+  playable: false
+  audio_type: MyString
+
+two:
+  user_id: 1
+  path: MyString
+  cover: MyString
+  title: MyString
+  artist: MyString
+  description: MyText
+  audio_text: MyText
+  category_id: 1
+  genre: 
+  duration: MyString
+  listener: MyString
+  downloadable: false
+  playable: false
+  audio_type: MyString
