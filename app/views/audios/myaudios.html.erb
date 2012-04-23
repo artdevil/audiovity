@@ -1,4 +1,3 @@
-<%= render 'audios/myplaylist' %>
 <div class="row-fluid">
 	<div class="span1">
 		&nbsp;
@@ -57,6 +56,52 @@
 							});
 							<% a = a + 1 %>
 						<% end %>
+							/*$('a.jp-play').toggle(function(e){
+								$(this).popover('show');
+							},	function(e){
+									$(this).popover('hide');
+								});
+								
+							$('a.jp-pause').click(function(e){
+								$('a.jp-play').popover('hide');
+							});
+							
+							$('a.jp-play').popover({
+								trigger: "manual"
+							}); */
+							var isVisible = false;
+							var clickedAway = false;
+
+							$('a.jp-play').popover({
+							        html: true,
+							        trigger: 'manual',
+							    }).click(function(e) {
+									if(isVisible){
+										$('a.jp-play.status').popover('hide');
+										$('a.jp-play.status').removeClass('status');
+										$(this).popover('show');
+										$(this).addClass('status');
+										isVisible = true;
+									}
+									else{
+										$(this).popover('show');
+										$(this).addClass('status');
+										isVisible = true;
+									}
+							    });
+
+							$('a.jp-pause').click(function(e) {
+							  if(isVisible)
+							  {
+							    $('a.jp-play').popover('hide');
+								$('a.jp-play.status').removeClass('status');
+							    isVisible = clickedAway = false
+							  }
+							  else
+							  {
+							    clickedAway = true
+							  }
+							}); 
 					});
 				</script>
 				<% b = 1 %>
@@ -68,19 +113,32 @@
 							<div class="jp-type-single">
 								<ul class="jp-control">
 									<li>
-										<a href="javascript:;" class="jp-play background-none" tabindex="1">
-											start
+										<a href="javascript:;" class="jp-play background-none" tabindex="1" rel="popover" title="A Title" data-content="And here's some amazing content. It's very engaging. right?">
+										
 										</a>
 									</li>
 									<li><a href="javascript:;" class="jp-pause background-none" tabindex="1">pause</a></li>
 								</ul>
 							</div>
+							<div class="playlist-info">
+								<div class="playlist-info-sub">
+									<h4><%= f.title %></h4>
+								</div>
+								<div class="playlist-info-sub">
+									<%= f.artist %>
+								</div>
+								<div class="playlist-info-sub">
+									<div class="jp-duration"></div>
+								</div>
+							</div>
 						</div>
+						
 					</div>
 					<% b = b +1 %>
 				<% end %>
 			</div>
 			<hr />
+			<div id="test">test</div>
 			<div class="align-right">
 				<%= paginate @audios %>
 			</div>

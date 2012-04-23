@@ -16,8 +16,9 @@
 //= require ckeditor/init
 //= require jquery.jplayer.min
 //= require jplayer.playlist.min
+
 $(function(){
-	$('#lihat').click(function(){
+	$('#show_playlist').click(function(){
 		$('.jp-playlist').slideToggle("slow");
 	});
 	

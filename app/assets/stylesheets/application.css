@@ -9,7 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap_and_overrides
- *= require blue.monday/jplayer.blue.monday
+ *= require playlist
 */
 
 /* body and base style */
@@ -93,6 +93,7 @@ span.help-inline{
 	position: absolute;
 	margin: 0px;
 	padding: 0px;
+	display: block;
 }
 
 .jp-control li a{
@@ -108,17 +109,17 @@ a.jp-play.background-none{
 }
 
 a.jp-play.background-none:hover{
-	background: white;
+	background: url(play-list.png) no-repeat;
 	opacity:0.4;
 	filter:alpha(opacity=40);
 }
 
 a.jp-pause.background-none{
-	background: white;
+	background: url(play-list.png) no-repeat;
 }
 
 a.jp-pause.background-none:hover{
-	background-image: none;
+	background: url(stop-list.png) no-repeat;
 }
 
 .playlist-info{
